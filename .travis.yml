@@ -2,3 +2,4 @@ language: java
 script:
 - mvn install
 - mvn compile
+- mvn test

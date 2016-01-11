@@ -1,9 +1,11 @@
 
 package com.samutamm.newsreader;
 
+import com.samutamm.newsreader.spark.Server;
+
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello from " + args[0]);
+        new Server().run();
     }
 }
