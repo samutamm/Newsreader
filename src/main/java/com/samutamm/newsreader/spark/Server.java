@@ -12,7 +12,7 @@ public class Server {
         this.reader = reader;
     }
     
-    public void run() {
+    public void init() {
         configureServer();
         createRoutes();
         awaitInitialization();

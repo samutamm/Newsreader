@@ -36,7 +36,7 @@ var NewsTable = React.createClass({
     }
 });
 
-const API_SOURCE = window.location.href + '/news';
+const API_SOURCE = window.location.href + 'news';
 
 ReactDOM.render(
     <NewsTable source={API_SOURCE} />,

@@ -15,7 +15,7 @@ public class ServerTest {
     @Before
     public void setUp() throws Exception {
         server = new Server(null);
-        server.run();
+        server.init();
     }
     
     @After
