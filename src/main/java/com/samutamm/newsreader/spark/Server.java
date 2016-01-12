@@ -5,16 +5,24 @@ import static spark.Spark.*;
 
 public class Server {
     public void run() {
-        String port = System.getenv("PORT");
-        System.out.println(port);
-        if(port != null) {
-            System.out.println(port);
-            port(Integer.parseInt(port));
-        }
-
-        get("/hello", (req, res) -> "Hello World");
-        get("/", (req, res) -> "Bolobolo lapalapa");
+        configureServer();
+        createRoutes();
         awaitInitialization();
+    }
+
+    private void configureServer() {
+      String port = System.getenv("PORT");
+      System.out.println(port);
+      if(port != null) {
+          System.out.println(port);
+          port(Integer.parseInt(port));
+      }
+      staticFileLocation("/public");
+    }
+
+    private void createRoutes() {
+      get("/hello", (req, res) -> "Hello World");
+      get("/news", (req, res) -> "News coming!");
     }
 
     public void closeServer() {
