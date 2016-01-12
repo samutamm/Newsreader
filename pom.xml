@@ -10,7 +10,70 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-    
+
+    <build>
+        <plugins>
+          <plugin>
+            <groupId>com.heroku.sdk</groupId>
+            <artifactId>heroku-maven-plugin</artifactId>
+            <version>0.5.7</version>
+            <configuration>
+              <appName>${heroku.appName}</appName>
+              <processTypes>
+                 <web>java $JAVA_OPTS -jar target/Newsreader-1.0-SNAPSHOT-jar-with-dependencies.jar</web>
+              </processTypes>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>2.5.1</version>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+                <optimize>true</optimize>
+                <debug>true</debug>
+            </configuration>
+           </plugin>
+
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>2.4</version>
+            <executions>
+              <execution>
+                <id>copy-dependencies</id>
+                <phase>package</phase>
+                <goals><goal>copy-dependencies</goal></goals>
+              </execution>
+            </executions>
+           </plugin>
+
+          <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+              <archive>
+                <manifest>
+                  <mainClass>com.samutamm.newsreader.Main</mainClass>
+                </manifest>
+              </archive>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+            </configuration>
+            <executions>
+                <execution>
+                  <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                  <phase>package</phase> <!-- bind to the packaging phase -->
+                  <goals>
+                    <goal>single</goal>
+                  </goals>
+                </execution>
+            </executions>
+          </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>com.sparkjava</groupId>
@@ -30,5 +93,5 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
-    
+
 </project>
