@@ -11,9 +11,9 @@ public class Server {
             System.out.println(port);
             port(Integer.parseInt(port));
         }
-        
+
         get("/hello", (req, res) -> "Hello World");
-        get("/", (req, res) -> "Bolobolo");
+        get("/", (req, res) -> "Bolobolo lapalapa");
         awaitInitialization();
     }
 
