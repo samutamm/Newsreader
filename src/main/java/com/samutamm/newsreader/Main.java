@@ -6,6 +6,7 @@ import com.samutamm.newsreader.spark.Server;
 
 public class Main {
     public static void main(String[] args) {
-        new Server().run();
+        Newsreader reader = new Newsreader();
+        new Server(reader).run();
     }
 }

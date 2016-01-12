@@ -1,26 +1,37 @@
 var NewsTable = React.createClass({
     getInitialState: function() {
         return {
-            news: 'Fetching news'
+            news: {fetching: true}
         };
     },
     componentDidMount: function() {
         $.get(this.props.source, function(result) {
+            var json = JSON.parse(result);
+            json.fetching = false;
             if(this.isMounted()) {
                 this.setState({
-                    news: result
+                    news: json
                 });
             }
         }.bind(this));
     },
     render: function() {
         var news = this.state.news;
-        return (
-           <div>
-            <h1>News</h1>
-            <p>{news}</p>
-           </div>
-        );
+        if(news.fetching) {
+          return (
+            <div>
+             <h1>Fetching news</h1>
+            </div>
+          );
+        } else {
+          return (
+             <div>
+              <h1>News</h1>
+              <p>Most popular: {news.popular}</p>
+              <p>Latest: {news.latest}</p>
+             </div>
+          );
+        }
     }
 });
 
