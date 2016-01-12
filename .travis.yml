@@ -15,4 +15,4 @@ before_install:
 - mvn install
 - cd ..
 after_success:
-  - mvn clean heroku:deploy
+  - mvn clean heroku:deploy -Dheroku.appName=murmuring-plateau-7361
