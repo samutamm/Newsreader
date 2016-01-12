@@ -7,6 +7,7 @@ var NewsTable = React.createClass({
     componentDidMount: function() {
         $.get(this.props.source, function(result) {
             var json = JSON.parse(result);
+            console.log(json);
             json.fetching = false;
             if(this.isMounted()) {
                 this.setState({

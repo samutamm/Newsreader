@@ -25,7 +25,6 @@ public class ServerTest {
 
     @Test
     public void testRun() {
-        
         assertEquals("Hello World", HTTPClient.callURL(serverURL));
     }
     
