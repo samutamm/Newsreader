@@ -1,1 +1,5 @@
 target/
+.idea/
+Newsreader.iml
+build/
+.gradle/
